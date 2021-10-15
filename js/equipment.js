@@ -8,12 +8,12 @@ function init() {
 function initEquipmentTable(){
   fetch("http://localhost:8080/equipment")
     .then(response => response.json())
-    .then(result => renderAcitivtyTable(result));
+    .then(result => renderEquipmentTable(result));
 
   ;
 }
 
-function renderAcitivtyTable(result) {
+function renderEquipmentTable(result) {
   let equipmentContainer = document.querySelector(".equipment_container");
 
   result.forEach(equipment => {
@@ -21,6 +21,7 @@ function renderAcitivtyTable(result) {
                             <div class='col-sm-2'>${equipment.id}</div>
                             <div class='col-sm-2'>${equipment.activity}</div>
                             <div class='col-sm-2'>${equipment.equipment_id}</div>
+                            <div class="col-sm-2"> <a href="editEquipment.html/?equipment_id=${equipment.id}">Rediger</a></div>
                          </div>`;
     equipmentContainer.insertAdjacentHTML("afterend", equipmentItem);
   });
@@ -57,6 +58,8 @@ document.querySelector("#btnCreateequipment").addEventListener("click", async fu
   }
 });
 
+
+
 // create equipment into the UI
 function insertEquipmentToUI(data) {
   console.log("create");
@@ -70,5 +73,6 @@ function insertEquipmentToUI(data) {
                        </div>`;
   equipmentContainer.insertAdjacentHTML("afterend", equipmentItem);
 }
+
 
 
