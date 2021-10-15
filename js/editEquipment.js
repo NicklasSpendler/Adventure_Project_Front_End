@@ -23,7 +23,6 @@ function initSingleEquipmentTable(id){
 
 function renderSingleEquipmentTable(data) {
   let equipmentContainer = document.querySelector(".singleEquipment_container");
-  console.log(data);
 
   var equipmentItem = `   <label class="mb-1">Aktivitet</label>
                           <input name="activity" class='mb-2' value="${data.activity}">
@@ -34,7 +33,6 @@ function renderSingleEquipmentTable(data) {
 
 document.querySelector("#btnUpdateEquipment").addEventListener("click", async function (e) {
   e.preventDefault()
-  console.log(e);
   // ta' fat i formen fra html'en
   const form = document.querySelector("#frmEditEquipment")
   const equipment_id = getEquipemntId();
@@ -42,11 +40,8 @@ document.querySelector("#btnUpdateEquipment").addEventListener("click", async fu
 
   try {
     const formData = new FormData(form);
-    console.log(form)
     const plainFormData = Object.fromEntries(formData.entries());
-    console.log(plainFormData)
     const jsonString = JSON.stringify(plainFormData);
-    console.log(jsonString)
     const fetchOptions = {
       method: "PUT",
       headers: {

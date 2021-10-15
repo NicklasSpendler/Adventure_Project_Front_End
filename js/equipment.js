@@ -4,7 +4,7 @@ function init() {
   initEquipmentTable();
 }
 
-
+// hent alt udstyret
 function initEquipmentTable(){
   fetch("http://localhost:8080/equipment")
     .then(response => response.json())
@@ -22,8 +22,10 @@ function renderEquipmentTable(result) {
                             <div class='col-sm-2'>${equipment.activity}</div>
                             <div class='col-sm-2'>${equipment.equipment_id}</div>
                             <div class="col-sm-2"> <a href="editEquipment.html/?equipment_id=${equipment.id}">Rediger</a></div>
+                            <div class="col-sm-2 btnDeleteEquipment" data-id="${equipment.id}">Slet</div>
                          </div>`;
     equipmentContainer.insertAdjacentHTML("afterend", equipmentItem);
+    equipmentDelete();
   });
 }
 
@@ -72,6 +74,36 @@ function insertEquipmentToUI(data) {
                           <div class='col-sm-2'>${data.equipment_id}</div>
                        </div>`;
   equipmentContainer.insertAdjacentHTML("afterend", equipmentItem);
+}
+
+
+// Delete
+function equipmentDelete() {
+  document.querySelector(".btnDeleteEquipment").addEventListener("click",  async function (e) {
+    const id = this.getAttribute("data-id")
+    console.log(id);
+
+
+    const url = "http://localhost:8080/equipment/" + id;
+
+    const fetchOptions = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: ""
+    }
+
+    const response = await fetch(url, fetchOptions);
+
+    if (!response.ok) {
+      console.log("det gik ikke godt");
+    }
+    if (response.ok) {
+      let equipmentDiv = this.parentNode;
+      equipmentDiv.remove();
+    }
+  })
 }
 
 
