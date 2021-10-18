@@ -12,7 +12,16 @@ body {
   display: none !important;
 }
 
-.data__table {
+.editButton {
+  cursor: pointer;
+}
+
+.item_controlPanel{
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper{
   width: 75vw;
   margin: 0 auto;
 }
