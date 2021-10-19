@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Opret tider</title>
+  <link rel="stylesheet" href="/Adventure_Project_Front_End\css/main.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <h1>Opret Tider</h1>
+  </div>
+  <div class="row mb-2">
+    <form action="http://localhost:8080/timeSlot" id="frmCreateTimeSlot">
+      <label>Tidspunkt</label>
+      <input name="timeSlot" type="time">
+      <label>Vælg Aktivitet</label>
+      <select name="activityID" class="sltActivity"></select>
+      <input type="submit" value="Opret tidspunkt">
+    </form>
+  </div>
+  <div class="row mb-2 d-flex">
+    <div class="col-sm-2">ID</div>
+    <div class="col-sm-2">Aktivitet ID</div>
+    <div class="col-sm-2">Tidspunkt</div>
+    <div class="col-sm-2">Delete</div>
+  </div>
+  <div class="row d-flex timeSlotContainer">
+
+  </div>
+</div>
+
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', init()
+
+
+  );
+  let activityJson = [];
+  function init() {
+    initActivityTable();
+  }
+
+  function initTimeSlotTable() {
+    fetch("http://localhost:8080/timeSlot")
+      .then(response => response.json())
+      .then(result => renderTimeSlotTable(result));
+  }
+
+  function renderTimeSlotTable(result) {
+    result.forEach(timeSlot => {
+
+      let activityValue;
+      for (i = 0; i < activityJson.length; i++) {
+        if (timeSlot.activityID == activityJson[i].activityID) {
+          activityValue = activityJson[i].name;
+        }
+      }
+      let timeSlot_container = document.querySelector(".timeSlotContainer");
+      let timeSlot_item = `<div class="d-flex mb-2 timeslot-item">
+                            <div class="col-sm-2">${timeSlot.timeSlotID}</div>
+                            <div class="col-sm-2">${activityValue}</div>
+                            <div class="col-sm-2">${timeSlot.timeSlot}</div>
+                            <div onclick="test(this)" class="col-sm-2 btnDeleteTimeSlot" data-id="${timeSlot.timeSlotID}">Slet</div>
+                         </div>`;
+      timeSlot_container.insertAdjacentHTML("beforeend", timeSlot_item);
+    });
+
+  }
+
+
+
+  // get activies - Select
+  function initActivityTable(){
+    fetch("http://localhost:8080/activity")
+      .then(response => response.json())
+      .then(result => renderAcitivtyTable(result));
+  }
+
+  function renderAcitivtyTable(result) {
+    result.forEach(activity => {
+      activityJson.push(activity);
+      insertActivityToUI(activity);
+    });
+    initTimeSlotTable();
+  }
+
+  function insertActivityToUI(data) {
+    let selectContainer = document.querySelector(".sltActivity");
+    let activity_item = `<option value="${data.activityID}">${data.name}</option>`;
+    selectContainer.insertAdjacentHTML("beforeend", activity_item);
+  }
+
+
+  //create
+  document.querySelector("#frmCreateTimeSlot").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    console.log(e);
+
+    const form = document.querySelector("#frmCreateTimeSlot");
+    const urlTimeSlot = form.action;
+    try {
+      const formData = new FormData(form);
+      const plainFormData = Object.fromEntries(formData.entries())
+      console.log(plainFormData)
+      const jsonString = JSON.stringify(plainFormData);
+      const fetchOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: jsonString
+      }
+      const response = await fetch(urlTimeSlot, fetchOptions)
+      if(!response) {
+        console.log("Det var sgu ikke godt")
+      }
+    } catch (error) {
+      alert(error)
+      console.log(error)
+    }
+  })
+
+// delete
+ async function test(e) {
+      const TimeSlotId = e.getAttribute("data-id")
+      const url = "http://localhost:8080/timeSlot/" + TimeSlotId;
+
+      const fetchOptions = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: ""
+      }
+      const response = await fetch(url, fetchOptions)
+
+      if (!response.ok) {
+        console.log("Det gik ikke godt")
+      }
+      if (response.ok) {
+        let timeSlotDiv = e.parentNode;
+        timeSlotDiv.remove();
+      }
+ }
+
+</script>
+</body>
+</html>

@@ -68,7 +68,7 @@ function insertEquipmentToUI(data) {
   console.log(data);
   let equipmentContainer = document.querySelector(".equipment_container");
 
-  var equipmentItem = `<div class='d-flex mb-2 equipment-item'>
+  let equipmentItem = `<div class='d-flex mb-2 equipment-item'>
                           <div class='col-sm-2'></div>
                           <div class='col-sm-2'>${data.activity}</div>
                           <div class='col-sm-2'>${data.equipment_id}</div>

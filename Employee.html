@@ -18,10 +18,22 @@
     <p class="col-sm-2">First Name</p>
     <p class="col-sm-2">Last Name</p>
     <p class="col-sm-2">Edit</p>
+    <p class="col-sm-2">Slet</p>
     </div>
   </div>
-  <div class="row equipment_container">
+  <div class="row employee_container">
 
+  </div>
+
+  <div class="row">
+    <h3>Opret Udstyr</h3>
+    <form id="frmCreateEmployee" method="post" action="http://localhost:8080/employee">
+      <label>Fornavn</label>
+      <input type="text" name="employee_first_name">
+      <label>Efternavn</label>
+      <input type="text" name="employee_last_name">
+      <button type="submit" id="btnCreateEmployee">Send</button>
+    </form>
   </div>
 
 
