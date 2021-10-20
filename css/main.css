@@ -8,6 +8,11 @@ body {
   margin: 0;
 }
 
+a {
+  color: black;
+  text-decoration: none;
+}
+
 .hidden {
   display: none !important;
 }
@@ -67,5 +72,17 @@ body {
 }
 
 .table__item > div > p {
+  text-align: center;
+}
+
+
+
+/* Edit page */
+
+.editForm {
+  display: flex;
+  width: 35%;
+  flex-direction: column;
+  margin: 0 auto;
   text-align: center;
 }

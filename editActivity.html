@@ -26,17 +26,19 @@
   <div class="wrapper">
     <h2>Edit Activity</h2>
 
-    <form action="">
+    <form id="frmEditActivity" class="editForm" action="">
       <label for="">Navn: </label>
-      <input type="text" value="Aktivitets Navn">
+      <input class="editForm__name" type="text" placeholder="Aktivitets Navn">
       <label for="">Pris: </label>
-      <input type="text" value="Aktivitets Pris">
+      <input class="editForm__price" type="text" placeholder="Aktivitets Pris">
       <label for="">Minumums Alder: </label>
-      <input type="text" value="Aktivitets Minumums Alder">
+      <input class="editForm__age" type="text" placeholder="Minumums Alder">
       <label for="">Minumums Højde: </label>
-      <input type="text" value="Aktivitets Minumums Højde">
+      <input class="editForm__height" type="text" placeholder="Minumums Højde">
       <label for="">Antal Deltager: </label>
-      <input type="text" value="Aktivitets Antal Deltager">
+      <input class="editForm__participants" type="text" placeholder="Antal Deltager">
+
+      <button class="editForm__submit">Submit</button>
     </form>
 
   </div>
