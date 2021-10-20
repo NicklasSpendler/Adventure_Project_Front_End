@@ -11,8 +11,6 @@ function initActivityTable(){
     fetch("http://localhost:8080/activity")
         .then(response => response.json())
         .then(result => renderAcitivtyTable(result));
-
-        ;
 }
 
 function renderAcitivtyTable(result) {
@@ -30,7 +28,7 @@ function insertActivityToUI(data){
     cloneNode.classList.remove("hidden");
 
     let nodeID = cloneNode.querySelector(".item__id p")
-    nodeID.textContent = data.activityID;
+    nodeID.textContent = data.id;
 
     let nodeName = cloneNode.querySelector(".item__name p")
     nodeName.textContent = data.name;
@@ -48,10 +46,11 @@ function insertActivityToUI(data){
     nodemax_participants.textContent = data.participants;
 
     let nodeEditBtn = cloneNode.querySelector(".controlPanel__edit");
-    nodeEditBtn.dataset.id = data.activityID;
+    nodeEditBtn.href = `editActivity.html/?activity_id=${data.id}`;
+    nodeEditBtn.dataset.id = data.id;
 
     let nodeDeleteBtn = cloneNode.querySelector(".controlPanel__delete");
-    nodeDeleteBtn.dataset.id = data.activityID;
+    nodeDeleteBtn.dataset.id = data.id;
 
 
 
@@ -78,10 +77,6 @@ function insertActivityToUI(data){
           equipmentDiv.remove();
         }
     });
-
-
-
-
 
     dataTable.appendChild(cloneNode);
 }
