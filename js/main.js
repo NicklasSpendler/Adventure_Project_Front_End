@@ -1,26 +1,41 @@
 let addFormElem = document.querySelector(".addForm");
 
+let searchInputElem = document.querySelector(".search__input");
+
+let dataTable = document.querySelector(".data__table");
+
+let data;
+
+let tableContent = dataTable.querySelector(".table__content");
+
+console.log(tableContent);
+
 document.addEventListener('DOMContentLoaded', init());
+
+
 
 function init() {
     initActivityTable();
 }
 
-
 function initActivityTable(){
     fetch("http://localhost:8080/activity")
         .then(response => response.json())
-        .then(result => renderAcitivtyTable(result));
+        .then(result => {
+            renderAcitivtyTable(result)
+            data = result;
+        });
 }
 
+
 function renderAcitivtyTable(result) {
+    data = result;
     result.forEach(activity => {
         insertActivityToUI(activity);
     });
 }
 
 function insertActivityToUI(data){
-    let dataTable = document.querySelector(".data__table");
     let tableItemNode = document.querySelector(".table__item_clonenode");
 
     let cloneNode = tableItemNode.cloneNode(true);
@@ -78,7 +93,7 @@ function insertActivityToUI(data){
         }
     });
 
-    dataTable.appendChild(cloneNode);
+    tableContent.appendChild(cloneNode);
 }
 
 addFormElem.addEventListener("submit", async function(e) {
@@ -108,7 +123,38 @@ addFormElem.addEventListener("submit", async function(e) {
 
     } catch (error) {
         alert(error.message);
-        console.log(error)
     }
 
+})
+
+
+let searchTerm;
+let searchResult;
+
+searchInputElem.addEventListener("input", (e)=> {
+    tableContent.innerHTML = "";
+    searchTerm = searchInputElem.value.toLowerCase();
+
+    if (searchInputElem.value != "") {
+        searchResult = data.filter((element) => {
+            console.log(searchTerm);
+            if(element.name.toLowerCase().includes(searchTerm) ||
+            element.price.toString().includes(searchTerm) ||
+            element.participants.toString().includes(searchTerm) ||
+            element.min_age.toString().includes(searchTerm) ||
+            element.min_height.toString().includes(searchTerm)) {
+                return element
+            }
+        })
+
+        searchResult.forEach(result => {
+            insertActivityToUI(result)
+        })
+
+
+    } else {
+        data.forEach(result => {
+            insertActivityToUI(result);
+        })
+    }
 })

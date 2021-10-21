@@ -13,6 +13,27 @@ a {
   text-decoration: none;
 }
 
+.search_container {
+  position: relative;
+  padding: 2rem 0 2rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.search_container > .search__icon {
+  position: absolute;
+  z-index: 2;
+  left: 10px;
+  pointer-events: none;
+}
+
+.search_container > .search__input{
+  position: absolute;
+  height: 2rem;
+  left: 0;
+  padding-left: 30px;
+}
+
 .hidden {
   display: none !important;
 }
