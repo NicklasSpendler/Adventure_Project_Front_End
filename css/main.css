@@ -86,3 +86,9 @@ a {
   margin: 0 auto;
   text-align: center;
 }
+
+/* Create reservation */
+.event-item input {
+  margin-right: 5px;
+}
+

@@ -11,20 +11,38 @@
     <div class="row">
       <h1>Opret Reservation</h1>
     </div>
-    <div class="row d-flex">
+    <div class="row d-flex mb-3">
       <form id="frmCreateReservation" method="post" action="http://localhost:8080/reservation" class="d-flex flex-column">
+        <p class="msg"></p>
         <label>Navn</label>
         <input name="name" class="mb-2" required>
         <label>Telefonnummer</label>
-        <input name="phone_number" class="mb-2" required>
+        <input name="phoneNumber" class="mb-2" required>
         <label>Antal Deltagere</label>
         <input name="participants" class="mb-2" required>
-        <label>Vælg Event</label>
-        <select name="activityid" class="mb-2" id="sltActivity" required>
+        <input name="eventID" type="text" class="d-none">
+        <label>Vælg Eventtype</label>
+        <select name="activityName" class="mb-4" id="sltActivity" required>
         </select>
-        <button id="btnSearchEvents" type="button">Søg efter events</button>
+        <div class="d-flex justify-content-between" >
+          <button id="btnSearchEvents" type="button">Søg efter events</button>
+          <input id="btnCreateReservation" type="submit" value="Opret Reservation">
+        </div>
+
       </form>
     </div>
+    <div class="row">
+      <h3 class="mb-3">Vælg Event</h3>
+      <div class="d-flex">
+        <p></p>
+        <p class="col-sm-3">Aktivitet</p>
+        <p class="col-sm-3">Tidspunkt</p>
+        <p class="col-sm-3">max deltagere</p>
+        <p class="col-sm-3">date</p>
+      </div>
+      <div class="eventsContainer"></div>
+    </div>
+
   </div>
 
 <script src="js/createReservation.js"></script>
