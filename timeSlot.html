@@ -64,7 +64,7 @@
                             <div class="col-sm-2">${timeSlot.timeSlotID}</div>
                             <div class="col-sm-2">${activityValue}</div>
                             <div class="col-sm-2">${timeSlot.timeSlot}</div>
-                            <div onclick="test(this)" class="col-sm-2 btnDeleteTimeSlot" data-id="${timeSlot.timeSlotID}">Slet</div>
+                            <div onclick="timeSlotDelete(this)" class="col-sm-2 btnDeleteTimeSlot" data-id="${timeSlot.timeSlotID}">Slet</div>
                          </div>`;
       timeSlot_container.insertAdjacentHTML("beforeend", timeSlot_item);
     });
@@ -90,7 +90,7 @@
 
   function insertActivityToUI(data) {
     let selectContainer = document.querySelector(".sltActivity");
-    let activity_item = `<option value="${data.activityID}">${data.name}</option>`;
+    let activity_item = `<option value="${data.id}">${data.name}</option>`;
     selectContainer.insertAdjacentHTML("beforeend", activity_item);
   }
 
@@ -125,7 +125,7 @@
   })
 
 // delete
- async function test(e) {
+ async function timeSlotDelete(e) {
       const TimeSlotId = e.getAttribute("data-id")
       const url = "http://localhost:8080/timeSlot/" + TimeSlotId;
 
