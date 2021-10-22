@@ -4,7 +4,6 @@ function init() {
 }
 
 function navbar() {
-  console.log("navbar")
   const nav = document.querySelector("#navbar");
   const navbar = `<div class="topnav">
                         <link rel="stylesheet" href="css/main.css">

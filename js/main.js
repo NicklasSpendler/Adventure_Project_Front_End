@@ -127,7 +127,6 @@ addFormElem.addEventListener("submit", async function(e) {
 
 })
 
-
 let searchTerm;
 let searchResult;
 
