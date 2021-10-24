@@ -49,13 +49,10 @@ document.querySelector("#btnSearchTimeSlot").addEventListener("click", function 
     fetch("http://localhost:8080/findTimeSlotByActivityID/" + activity.value)
       .then(response => response.json())
       .then(result => renderTimeSlotTable(result));
-
-
+  
 })
 
 function renderTimeSlotTable(result){
-  console.log(result);
-
   if(document.querySelector(".timeSlot-item")) {
     let deleteDivs = document.querySelectorAll(".timeSlot-item")
     for (i = 0; i < deleteDivs.length; i++) {
@@ -66,10 +63,10 @@ function renderTimeSlotTable(result){
 
   let timeSlotContainer = document.querySelector("#sltTimeSlot");
   result.forEach(data =>{
-    let timeSlot_item = `<option class="timeSlot-item" value="${data.timeSlot}">${data.timeSlot}</option>`;
+    console.log(data);
+    let timeSlot_item = `<option class="timeSlot-item" data-id="${data.timeSlotID}" value="${data.timeSlot}">${data.timeSlot}</option>`;
     timeSlotContainer.insertAdjacentHTML("afterbegin", timeSlot_item);
   });
 
 
 }
-

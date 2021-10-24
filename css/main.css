@@ -125,6 +125,14 @@ header {
   text-align: center;
 }
 
+.btnDeleteEquipment{
+  cursor: pointer;
+}
+
+.btnDeleteEmployee{
+  cursor: pointer;
+}
+
 /* Create reservation */
 .event-item input {
   margin-right: 5px;

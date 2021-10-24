@@ -56,7 +56,7 @@ document.querySelector("#btnUpdateEquipment").addEventListener("click", async fu
       console.log("det gik godt")
       document.querySelector(".msg").innerHTML = "Udstyr er opdateret. Du vil blive ledt tilbage til den forrige side om 3 sek."
       setTimeout(function () {
-        location.href = "/Adventure_Project_Front_End/equipment.html";
+        location.href = "../equipment.html";
       }, 3000)
     }
 

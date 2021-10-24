@@ -58,12 +58,11 @@ document.querySelector(".editForm__submit").addEventListener("click", async func
       console.log("det gik ikke godt");
     } else {
       console.log("det gik godt")
+      // Husk at implemanter dette
       //document.querySelector(".msg").innerHTML = "Udstyr er opdateret. Du vil blive ledt tilbage til den forrige side om 3 sek."
-      /*
       setTimeout(function () {
-        location.href = "../index.html";
+        location.href = "../activity.html";
       }, 3000)
-      */
     }
 
   } catch (error) {
