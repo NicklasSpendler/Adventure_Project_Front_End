@@ -6,16 +6,28 @@ html {
 
 body {
   margin: 0;
+  background-color: #38383D;
 }
 
-a, h1, h2, h3, h4, h5, p, span, button, label {
+a, h1, h2, h3, h4, h5, p, span, button, label, div {
   font-family: 'Roboto', sans-serif;
   letter-spacing: 2px;
+  color: white;
 }
 
 a {
-  color: black;
+  color: white;
   text-decoration: none;
+}
+
+button {
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+header {
+  margin-bottom: 1rem;
 }
 
 .search_container {
@@ -67,13 +79,13 @@ a {
   width: 100%;
   height: 100%;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid white;
   border-right: 0;
   box-sizing: border-box;
 }
 
 .data__table > .table__header > div:last-of-type {
-  border-right: 1px solid black;
+  border-right: 1px solid white;
 }
 
 .table__item {
@@ -83,7 +95,7 @@ a {
 
 .table__item > div {
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid white;
   border-top: none;
   border-right: none;
   box-sizing: border-box;
@@ -94,7 +106,7 @@ a {
 }
 
 .table__item > div:last-of-type {
-  border-right: 1px solid black;
+  border-right: 1px solid white;
 }
 
 .table__item > div > p {
