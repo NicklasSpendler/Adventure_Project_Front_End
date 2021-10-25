@@ -14,6 +14,7 @@ function navbar() {
                         <a href="activity.html">Aktiviteter</a>
                         <a href="equipment.html">Udstyr</a>
                         <a href="Employee.html">Medarbejdere</a>
+                        <a href="timeSlot.html">Tider</a>
                   </div>`;
   nav.insertAdjacentHTML("afterend", navbar);
 }

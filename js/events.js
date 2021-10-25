@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', init());
+
+let createEventBtnElem = document.querySelector("#btnCreateEvent");
+
 let activityJson = [];
 
 function init() {
@@ -63,10 +66,50 @@ function renderTimeSlotTable(result){
 
   let timeSlotContainer = document.querySelector("#sltTimeSlot");
   result.forEach(data =>{
-    console.log(data);
+    //console.log(data);
     let timeSlot_item = `<option class="timeSlot-item" data-id="${data.timeSlotID}" value="${data.timeSlot}">${data.timeSlot}</option>`;
     timeSlotContainer.insertAdjacentHTML("afterbegin", timeSlot_item);
   });
-
-
 }
+
+createEventBtnElem.addEventListener("click", async (e)=> {
+  e.preventDefault();
+  
+
+
+  try {
+
+
+    const form = document.querySelector("#frmCreateEvent")
+    const url = form.action;
+  
+    let eventObject = {};
+  
+    eventObject.date = form.date.value;
+    eventObject.event_activity = form.activityID.value;
+    eventObject.time_slot = form.timeSlot.value;
+    eventObject.max_participants = form.maxParticipants.value;
+
+    eventObjectString = JSON.stringify(eventObject);
+
+    console.log(eventObjectString);
+
+  /*
+    const fetchOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: eventObjectString
+    }
+    const response = await fetch(url, fetchOptions);
+    if (!response.ok) {
+      console.log("det gik ikke godt");
+    }
+*/
+  } catch (error) {
+    alert(error.message);
+    console.log(error);
+  }
+
+})

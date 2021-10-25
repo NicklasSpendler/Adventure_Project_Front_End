@@ -113,10 +113,11 @@ header {
   text-align: center;
 }
 
-
+.addForm {
+  
+}
 
 /* Edit page */
-
 .editForm {
   display: flex;
   width: 35%;
