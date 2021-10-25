@@ -6,8 +6,27 @@ let activityJson = [];
 
 function init() {
   initActivityTable();
+  initWorkerTable();
 }
 
+
+function initWorkerTable() {
+  fetch("http://localhost:8080//employee")
+    .then(response => response.json())
+    .then(result => renderEmployeeDropdown(result))
+}
+
+function renderEmployeeDropdown(employeeData) {
+  employeeData.forEach(employee => {
+    insertEmployeeToUI(employee)
+  })
+}
+
+function insertEmployeeToUI(employee){
+  let selectContainer = document.querySelector("#sltEmployee");
+  let employee_item = `<option value="${employee.employee_id}">${employee.employee_first_name}</option>`;
+  selectContainer.insertAdjacentHTML("beforeend", employee_item);
+}
 
 // get activies - Select
 function initActivityTable(){
@@ -17,7 +36,6 @@ function initActivityTable(){
 }
 
 function renderAcitivtyTable(result) {
-  console.log(result)
   result.forEach(activity => {
     activityJson.push(activity);
     insertActivityToUI(activity);
@@ -32,13 +50,9 @@ function insertActivityToUI(data) {
 }
 
 document.querySelector("#sltActivity").addEventListener("change", function () {
-  console.log("ændring")
-  console.log(activityJson)
   let activityInput = document.querySelector("#sltActivity").value;
-  console.log(activityInput)
   for (i = 0; i < activityJson.length; i++) {
     if (activityInput == activityJson[i].name) {
-      console.log("ændre antal deltagere")
       document.querySelector("#maxParticipants").value = activityJson[i].participants
     }
   }
@@ -47,7 +61,6 @@ document.querySelector("#sltActivity").addEventListener("change", function () {
 document.querySelector("#btnSearchTimeSlot").addEventListener("click", function () {
     let activity = document.querySelector("#sltActivity");
     // hent alt udstyret
-    console.log(activity.value);
 
     fetch("http://localhost:8080/findTimeSlotByActivityID/" + activity.value)
       .then(response => response.json())
@@ -74,8 +87,6 @@ function renderTimeSlotTable(result){
 
 createEventBtnElem.addEventListener("click", async (e)=> {
   e.preventDefault();
-  
-
 
   try {
 
@@ -86,13 +97,12 @@ createEventBtnElem.addEventListener("click", async (e)=> {
     let eventObject = {};
   
     eventObject.date = form.date.value;
-    eventObject.eventActivity = form.activityID.value;
+    eventObject.activityID = form.activityID.value;
     eventObject.timeSlot = form.timeSlot.value;
     eventObject.maxParticipants = form.maxParticipants.value;
+    eventObject.employeeID = form.employeeID.value;
 
     eventObjectString = JSON.stringify(eventObject);
-
-    console.log(eventObjectString);
 
     const fetchOptions = {
       method: "POST",

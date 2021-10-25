@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Calender</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    
+    <header>
+        <nav id="navbar"></nav>
+    </header>
+
+    <div class="wrapper">
+        <div class="data__table">
+            <div class="table__header">
+                <div class="header__id">
+                    <p>Event ID</p>
+                </div>
+                <div class="header__date">
+                    <p>Event Dato</p>
+                </div>
+                <div class="header__time">
+                    <p>Event Tid</p>
+                </div>
+                <div class="header__employee">
+                    <p>Event Arbejder</p>
+                </div>
+                <div class="header__participants">
+                    <p>Antal Deltagende</p>
+                </div>
+                <div class="header__maxParticipants">
+                    <p>Maks Antal Deltagende</p>
+                </div>
+            </div>
+            <div class="table__content">
+            
+            </div>
+        </div>
+    </div>
+
+    <!--Clone node-->
+    <div class="table__item hidden table__item_clonenode">
+        <div class="item__id">
+            <p>{id}</p>
+        </div>
+        <div class="item__date">
+            <p>{date}</p>
+        </div>
+        <div class="item__time">
+            <p>{time}</p>
+        </div>
+        <div class="item__employee">
+            <p>{employee}</p>
+        </div>
+        <div class="item__maxParticipants">
+            <p>{maxParticipants}</p>
+        </div>
+        <div class="item__participants">
+            <p>{participants}
+        </div>
+    </div>
+
+    <script src="js/eventCalender.js"></script>
+    <script src="js/nav.js"></script>
+</body>
+</html>
