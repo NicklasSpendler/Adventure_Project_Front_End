@@ -42,13 +42,13 @@ function insertEventToUI(eventData) {
     nodeTime.textContent = eventData.timeSlot;
 
     let nodeEmployee = cloneNode.querySelector(".item__employee p");
-    nodeEmployee.textContent = eventData.employeeID;
+    nodeEmployee.textContent = eventData.employee.employee_first_name;
 
     let nodeParticipants = cloneNode.querySelector(".item__participants p");
-    nodeParticipants.textContent = "Not yet";
+    nodeParticipants.textContent = eventData.activity.participants;
 
     let nodeMaxParticipants = cloneNode.querySelector(".item__maxParticipants p");
-    nodeMaxParticipants.textContent = "Not yet";
+    nodeMaxParticipants.textContent = eventData.maxParticipants;
 
     tableContent.appendChild(cloneNode);
 }
