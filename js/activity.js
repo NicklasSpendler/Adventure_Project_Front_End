@@ -8,8 +8,6 @@ let data;
 
 let tableContent = dataTable.querySelector(".table__content");
 
-console.log(tableContent);
-
 document.addEventListener('DOMContentLoaded', init());
 
 
@@ -66,8 +64,6 @@ function insertActivityToUI(data){
 
     let nodeDeleteBtn = cloneNode.querySelector(".controlPanel__delete");
     nodeDeleteBtn.dataset.id = data.id;
-
-
 
     nodeDeleteBtn.addEventListener("click", async function(e){
         const id = this.dataset.id;
