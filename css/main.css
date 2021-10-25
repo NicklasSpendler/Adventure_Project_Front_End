@@ -114,7 +114,7 @@ header {
 }
 
 .addForm {
-  
+
 }
 
 /* Edit page */
@@ -143,7 +143,7 @@ header {
 
 /* Top nav css */
 .topnav {
-  background-color: #333;
+  background-color: #1e1e1e;
   overflow: hidden;
 }
 
@@ -154,14 +154,82 @@ header {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  position: relative;
 }
 
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
+
+
+.topnav a:hover:after  {
+  background-color: #ffffff;
+  -webkit-animation: flicker2 1s linear infinite;
+  animation: flicker 1s linear infinite;
+  opacity: 1;
+  width: 90%;
 }
+
+@keyframes flicker {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+
+.topnav a:after {
+  content: "";
+  display: block;
+  background-color: #fff;
+  border-radius: 2px;
+  height: 3px;
+  width: 0;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: all .4s ease;
+  box-shadow: 0 0 20px 2px #ffffff, 0 0 20px 2px #ffffff, 0 0 20px 2px #ffffff, 0 0 20px 2px #ffffff, 0 0 10px #ffffff, 0 0 4px #ffffff, 0 0 2px #ffffff;
+}
+
+.topnav .yellowFlicker:after {
+  box-shadow: 0 0 20px 2px #ffc724, 0 0 20px 2px #ffc724, 0 0 20px 2px #ffc724, 0 0 20px 2px #ffc724, 0 0 10px #ffc724, 0 0 4px #ffc724, 0 0 2px #ffc724;
+}
+
+.topnav .whiteFlicker:after {
+  box-shadow: 0 0 20px 2px #ffffff, 0 0 20px 2px #ffffff, 0 0 20px 2px #ffffff, 0 0 20px 2px #ffffff, 0 0 10px #ffffff, 0 0 4px #ffffff, 0 0 2px #ffffff;
+}
+
+.topnav .greenFlicker:after {
+  box-shadow: 0 0 20px 2px #3fc34d, 0 0 20px 2px #3fc34d, 0 0 20px 2px #3fc34d, 0 0 20px 2px #3fc34d, 0 0 10px #3fc34d, 0 0 4px #3fc34d, 0 0 2px #3fc34d;
+}
+
+.topnav .redFlicker:after {
+  box-shadow: 0 0 20px 2px #ef0000, 0 0 20px 2px #ef0000, 0 0 20px 2px #ef0000, 0 0 20px 2px #ef0000, 0 0 10px #ef0000, 0 0 4px #ef0000, 0 0 2px #ef0000;
+}
+
+.topnav .cyanFlicker:after {
+  box-shadow: 0 0 20px 2px #1ec3f5, 0 0 20px 2px #1ec3f5, 0 0 20px 2px #1ec3f5, 0 0 20px 2px #1ec3f5, 0 0 10px #1ec3f5, 0 0 4px #1ec3f5, 0 0 2px #1ec3f5;
+}
+
+.topnav .purpleFlicker:after {
+  box-shadow: 0 0 20px 2px #5517c1, 0 0 20px 2px #5517c1, 0 0 20px 2px #5517c1, 0 0 20px 2px #5517c1, 0 0 10px #5517c1, 0 0 4px #5517c1, 0 0 2px #5517c1;
+}
+
+.topnav .orangeFlicker:after {
+  box-shadow: 0 0 20px 2px #df6655, 0 0 20px 2px #df6655, 0 0 20px 2px #df6655, 0 0 20px 2px #df6655, 0 0 10px #df6655, 0 0 4px #df6655, 0 0 2px #df6655;
+}
+
+
+
+
+
+
 
 .topnav a.active {
   background-color: #04AA6D;
   color: white;
+}
+
+/* Cards - fronpage */
+.card-img-top {
+  height: 190px;
+  object-fit: cover;
 }

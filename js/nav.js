@@ -8,13 +8,13 @@ function navbar() {
   const nav = document.querySelector("#navbar");
   const navbar = `<div class="topnav">
                         <link rel="stylesheet" href="css/main.css">
-                        <a href="/404.html" class="">FORSIDE</a>
-                        <a href="events.html">Events</a>
-                        <a href="CreateReservation.html">Lav reservation</a>
-                        <a href="activity.html">Aktiviteter</a>
-                        <a href="equipment.html">Udstyr</a>
-                        <a href="Employee.html">Medarbejdere</a>
-                        <a href="timeSlot.html">Tider</a>
+                        <a class="whiteFlicker" href="homePage.html" class="">FORSIDE</a>
+                        <a class="yellowFlicker" href="events.html">Events</a>
+                        <a class="greenFlicker" href="CreateReservation.html">Lav reservation</a>
+                        <a class="redFlicker" href="activity.html">Aktiviteter</a>
+                        <a class="cyanFlicker" href="equipment.html">Udstyr</a>
+                        <a class="purpleFlicker" href="Employee.html">Medarbejdere</a>
+                        <a class="orangeFlicker" href="timeSlot.html">Tider</a>
                   </div>`;
   nav.insertAdjacentHTML("afterend", navbar);
 }

@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', init());
+activityJson = [];
 function init() {
   initActivityTable();
   console.log("test")
@@ -8,7 +9,7 @@ document.querySelector("#btnSearchEvents").addEventListener("click", async funct
   let activity = document.querySelector("#sltActivity");
   // hent alt udstyret
 
-  fetch("http://localhost:8080/findEventByName/" + activity.value)
+  fetch("http://localhost:8080/findEventByActivityID/" + activity.value)
     .then(response => response.json())
     .then(result => renderEventTable(result));
   ;
@@ -25,11 +26,17 @@ function renderEventTable(result){
 
   let eventContainer = document.querySelector(".eventsContainer");
   result.forEach(event =>{
+    let activityName;
+    for (i = 0; i < activityJson.length; i++) {
+      if (activityJson[i].id == event.activityID) {
+        activityName = activityJson[i].name;
+      }
+    }
     let date = new Date(event.date);
     let eventItem = `<div class="event-item d-flex form-check">
                             <div class="col-sm-3">
                                 <input class="form-check-input" type="radio" name="ChooseEvent" required value="${event.eventID}">
-                                ${event.eventActivity}
+                                ${activityName}
                             </div>
                             <p class="col-sm-3">${event.timeSlot}</p>
                             <p class="col-sm-3">${event.maxParticipants}</p>
@@ -43,10 +50,8 @@ function renderEventTable(result){
 document.querySelector("#frmCreateReservation").addEventListener("submit",function(e) {
 
   e.preventDefault();
-  console.log("create reservation")
   if(document.querySelector('input[name="ChooseEvent"]:checked')) {
     let eventID = document.querySelector('input[name="ChooseEvent"]:checked').value;
-    console.log(eventID);
     document.querySelector('input[name="eventID"]').value = eventID;
     postReservationToBackend();
   } else {
@@ -57,7 +62,6 @@ document.querySelector("#frmCreateReservation").addEventListener("submit",functi
 
 async function postReservationToBackend () {
     const form = document.querySelector("#frmCreateReservation");
-    console.log(form)
     const createReservationUrl = form.action;
     try {
       const formData = new FormData(form);
@@ -97,12 +101,13 @@ function initActivityTable(){
 function renderAcitivtyTable(result) {
   console.log(result)
   result.forEach(activity => {
+    activityJson.push(activity);
     insertActivityToUI(activity);
   });
 }
 
 function insertActivityToUI(data) {
   let selectContainer = document.querySelector("#sltActivity");
-  let activity_item = `<option value="${data.name}">${data.name}</option>`;
+  let activity_item = `<option value="${data.id}">${data.name}</option>`;
   selectContainer.insertAdjacentHTML("beforeend", activity_item);
 }
