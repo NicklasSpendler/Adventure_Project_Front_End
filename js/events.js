@@ -86,15 +86,14 @@ createEventBtnElem.addEventListener("click", async (e)=> {
     let eventObject = {};
   
     eventObject.date = form.date.value;
-    eventObject.event_activity = form.activityID.value;
-    eventObject.time_slot = form.timeSlot.value;
-    eventObject.max_participants = form.maxParticipants.value;
+    eventObject.eventActivity = form.activityID.value;
+    eventObject.timeSlot = form.timeSlot.value;
+    eventObject.maxParticipants = form.maxParticipants.value;
 
     eventObjectString = JSON.stringify(eventObject);
 
     console.log(eventObjectString);
 
-  /*
     const fetchOptions = {
       method: "POST",
       headers: {
@@ -106,7 +105,8 @@ createEventBtnElem.addEventListener("click", async (e)=> {
     if (!response.ok) {
       console.log("det gik ikke godt");
     }
-*/
+    
+
   } catch (error) {
     alert(error.message);
     console.log(error);
