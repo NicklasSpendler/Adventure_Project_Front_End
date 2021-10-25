@@ -1,0 +1,117 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+
+<header>
+  <nav id="navbar"></nav>
+</header>
+
+<div class="wrapper">
+
+  <form class="addForm" method="POST" action="http://localhost:8080//activity">
+
+    <label for="addName">Aktivitets Navn</label>
+    <input type="text" name="name" id="addName">
+
+    <label for="addPrice">Pris</label>
+    <input type="text" name="price" id="addPrice">
+
+    <label for="addMinAge">Minimum Alder</label>
+    <input type="text" name="min_age" id="addMinAge">
+
+    <label for="addMinHeight">Minimum Højde</label>
+    <input type="text" name="min_height" id="addMinHeight">
+
+    <label for="addParticipants">Deltagere</label>
+    <input type="text" name="participants" id="addParticipants">
+
+    <button class="formSubmit" type="submit">Opret</button>
+  </form>
+
+  <div class="search_container">
+    <i class="fas fa-search search__icon"></i>
+    <input class="search__input" type="text">
+  </div>
+
+  <div class="data__table">
+    <div class="table__header">
+      <div class="header__id">
+        <p>ID</p>
+      </div>
+      <div class="header__name">
+        <p>Name</p>
+      </div>
+      <div class="header__price">
+        <p>Price</p>
+      </div>
+      <div class="header__min_age">
+        <p>Mindste Alder</p>
+      </div>
+      <div class="header__min_height">
+        <p>Mindste Højde</p>
+      </div>
+      <div class="header__participants">
+        <p>Antal Deltagere</p>
+      </div>
+      <div><p>Kontrol</p></div>
+    </div>
+    <div class="table__content">
+      
+    </div>
+  </div>
+
+
+
+  <!--Clone node-->
+  <div class="table__item hidden table__item_clonenode">
+    <div class="item__id">
+      <p>{id}</p>
+    </div>
+    <div class="item__name">
+      <p>{name}</p>
+    </div>
+    <div class="item__price">
+      <p>{price}</p>
+    </div>
+    <div class="item__min_age">
+      <p>{min_age}</p>
+    </div>
+    <div class="item__min_height">
+      <p>{min_height}</p>
+    </div>
+    <div class="item__participants">
+      <p>{header__participants}
+    </div>
+    <div class="item_controlPanel">
+      <a class="controlPanel__edit editButton" href="">Edit</a>
+      <span class="controlPanel__delete editButton">Delete</span>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/nav.js"></script>
+</body>
+
+</html>
