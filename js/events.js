@@ -45,7 +45,7 @@ function renderAcitivtyTable(result) {
 
 function insertActivityToUI(data) {
   let selectContainer = document.querySelector("#sltActivity");
-  let activity_item = `<option value="${data.id}">${data.name}</option>`;
+  let activity_item = `<option value="${data.activityID}">${data.name}</option>`;
   selectContainer.insertAdjacentHTML("beforeend", activity_item);
 }
 
@@ -79,7 +79,7 @@ function renderTimeSlotTable(result){
 
   let timeSlotContainer = document.querySelector("#sltTimeSlot");
   result.forEach(data =>{
-    //console.log(data);
+    console.log(data);
     let timeSlot_item = `<option class="timeSlot-item" data-id="${data.timeSlotID}" value="${data.timeSlot}">${data.timeSlot}</option>`;
     timeSlotContainer.insertAdjacentHTML("afterbegin", timeSlot_item);
   });
@@ -97,10 +97,13 @@ createEventBtnElem.addEventListener("click", async (e)=> {
     let eventObject = {};
   
     eventObject.date = form.date.value;
-    eventObject.activityID = form.activityID.value;
+    eventObject.activity = {};
+    eventObject.activity.activityID = form.activityID.value;
     eventObject.timeSlot = form.timeSlot.value;
     eventObject.maxParticipants = form.maxParticipants.value;
-    eventObject.employeeID = form.employeeID.value;
+    //eventObject.employeeID = form.employeeID.value;
+
+    console.log(eventObject);
 
     eventObjectString = JSON.stringify(eventObject);
 

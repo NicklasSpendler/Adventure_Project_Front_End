@@ -51,13 +51,14 @@
 
   function renderTimeSlotTable(result) {
     result.forEach(timeSlot => {
-
       let activityValue;
       for (i = 0; i < activityJson.length; i++) {
-        if (timeSlot.activityID == activityJson[i].id) {
+        if (timeSlot.activityID == activityJson[i].activityID) {
           activityValue = activityJson[i].name;
+          
         }
       }
+      
       let timeSlot_container = document.querySelector(".timeSlotContainer");
       let timeSlot_item = `<div class="d-flex mb-2 timeslot-item">
                             <div class="col-sm-2">${timeSlot.timeSlotID}</div>
