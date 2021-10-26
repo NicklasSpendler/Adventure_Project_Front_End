@@ -16,7 +16,7 @@ function renderEmployeeTable(result){
   let employeeContainer = document.querySelector(".employee_container");
   result.forEach(employee =>{
     let employeeObject = `<div class='d-flex mb-2 employee-item'>
-                            <div class='col-sm-2'>${employee.employee_id}</div>
+                            <div class='col-sm-2'>${employee.employeeID}</div>
                             <div class='col-sm-2'>${employee.employee_first_name}</div>
                             <div class='col-sm-2'>${employee.employee_last_name}</div>
                             <div class="col-sm-2"> <a href="editEmployee.html/?employee_id=${employee.employee_id}">Rediger</a></div>

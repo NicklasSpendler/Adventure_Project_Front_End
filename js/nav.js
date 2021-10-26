@@ -9,7 +9,7 @@ function navbar() {
   const navbar = `<div class="topnav">
                         <link rel="stylesheet" href="css/main.css">
                         <a class="whiteFlicker" href="homePage.html" class="">FORSIDE</a>
-                        <a class="yellowFlicker" href="events.html">Events</a>
+                        <a class="yellowFlicker" href="eventCalender.html">Events</a>
                         <a class="greenFlicker" href="CreateReservation.html">Lav reservation</a>
                         <a class="redFlicker" href="activity.html">Aktiviteter</a>
                         <a class="cyanFlicker" href="equipment.html">Udstyr</a>

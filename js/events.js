@@ -24,7 +24,7 @@ function renderEmployeeDropdown(employeeData) {
 
 function insertEmployeeToUI(employee){
   let selectContainer = document.querySelector("#sltEmployee");
-  let employee_item = `<option value="${employee.employee_id}">${employee.employee_first_name}</option>`;
+  let employee_item = `<option value="${employee.employeeID}">${employee.employee_first_name}</option>`;
   selectContainer.insertAdjacentHTML("beforeend", employee_item);
 }
 
@@ -101,7 +101,8 @@ createEventBtnElem.addEventListener("click", async (e)=> {
     eventObject.activity.activityID = form.activityID.value;
     eventObject.timeSlot = form.timeSlot.value;
     eventObject.maxParticipants = form.maxParticipants.value;
-    //eventObject.employeeID = form.employeeID.value;
+    eventObject.employee = {};
+    eventObject.employee.employeeID = form.employeeID.value;
 
     console.log(eventObject);
 

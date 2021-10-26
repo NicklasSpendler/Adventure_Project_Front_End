@@ -33,6 +33,8 @@ function insertEventToUI(eventData) {
     let nodeId = cloneNode.querySelector(".item__id p");
     nodeId.textContent = eventData.eventID;
 
+    let aktvitetsNavn = cloneNode.querySelector(".item__aktivitet");
+    aktvitetsNavn.textContent = eventData.activity.name;
 
     let date = new Date(eventData.date);
     let nodeDate = cloneNode.querySelector(".item__date p");
