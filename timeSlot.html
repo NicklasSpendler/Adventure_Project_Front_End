@@ -89,8 +89,9 @@
   }
 
   function insertActivityToUI(data) {
+    console.log(data);
     let selectContainer = document.querySelector(".sltActivity");
-    let activity_item = `<option value="${data.id}">${data.name}</option>`;
+    let activity_item = `<option value="${data.activityID}">${data.name}</option>`;
     selectContainer.insertAdjacentHTML("beforeend", activity_item);
   }
 
