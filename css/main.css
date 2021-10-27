@@ -82,6 +82,10 @@ header {
   border: 1px solid white;
   border-right: 0;
   box-sizing: border-box;
+  min-height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .data__table > .table__header > div:last-of-type {
