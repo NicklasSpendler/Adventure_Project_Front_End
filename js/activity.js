@@ -58,12 +58,14 @@ function insertActivityToUI(data){
     let nodemax_participants = cloneNode.querySelector(".item__participants p")
     nodemax_participants.textContent = data.participants;
 
+    console.log(data);
+
     let nodeEditBtn = cloneNode.querySelector(".controlPanel__edit");
-    nodeEditBtn.href = `editActivity.html/?activity_id=${data.id}`;
-    nodeEditBtn.dataset.id = data.id;
+    nodeEditBtn.href = `editActivity.html/?activity_id=${data.activityID}`;
+    nodeEditBtn.dataset.id = data.activityID;
 
     let nodeDeleteBtn = cloneNode.querySelector(".controlPanel__delete");
-    nodeDeleteBtn.dataset.id = data.id;
+    nodeDeleteBtn.dataset.id = data.activityID;
 
     nodeDeleteBtn.addEventListener("click", async function(e){
         const id = this.dataset.id;
