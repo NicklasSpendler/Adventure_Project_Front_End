@@ -25,7 +25,7 @@ function renderEventTable(result){
   result.forEach(event =>{
     let activityName;
     for (i = 0; i < activityJson.length; i++) {
-      if (activityJson[i].id == event.activityID) {
+      if (activityJson[i].activityID == event.activity.activityID) {
         activityName = activityJson[i].name;
       }
     }
