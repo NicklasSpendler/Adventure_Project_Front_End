@@ -2,17 +2,14 @@ document.addEventListener('DOMContentLoaded', init());
 activityJson = [];
 function init() {
   initActivityTable();
-  console.log("test")
 }
 
 document.querySelector("#btnSearchEvents").addEventListener("click", async function (e) {
   let activity = document.querySelector("#sltActivity");
   // hent alt udstyret
-
   fetch("http://localhost:8080/findEventByActivityID/" + activity.value)
     .then(response => response.json())
     .then(result => renderEventTable(result));
-  ;
 
 })
 
@@ -99,7 +96,6 @@ function initActivityTable(){
 }
 
 function renderAcitivtyTable(result) {
-  console.log(result)
   result.forEach(activity => {
     activityJson.push(activity);
     insertActivityToUI(activity);
@@ -108,6 +104,6 @@ function renderAcitivtyTable(result) {
 
 function insertActivityToUI(data) {
   let selectContainer = document.querySelector("#sltActivity");
-  let activity_item = `<option value="${data.id}">${data.name}</option>`;
+  let activity_item = `<option value="${data.activityID}">${data.name}</option>`;
   selectContainer.insertAdjacentHTML("beforeend", activity_item);
 }

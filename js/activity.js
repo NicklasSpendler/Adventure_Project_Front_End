@@ -41,7 +41,7 @@ function insertActivityToUI(data){
     cloneNode.classList.remove("hidden");
 
     let nodeID = cloneNode.querySelector(".item__id p")
-    nodeID.textContent = data.id;
+    nodeID.textContent = data.activityID;
 
     let nodeName = cloneNode.querySelector(".item__name p")
     nodeName.textContent = data.name;
